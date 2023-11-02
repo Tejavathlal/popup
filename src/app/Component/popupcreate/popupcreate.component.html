@@ -1,0 +1,178 @@
+<h1 mat-dialog-title>Add Student Form</h1>
+
+<div mat-dialog-content>
+
+    <!-- Apply Form FormGroup -->
+    <h6>Add in the Below</h6>
+    <form [formGroup]="studentForm">
+        <div class="row">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input type="text" matInput placeholder="Enter Name" formControlName="name">
+                <mat-hint>Enter Full Name</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="@gmail.com" formControlName="email">
+                <mat-hint>Enter Your Email ID.</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Mobile</mat-label>
+                <input type="number" matInput placeholder="Enter Mobile" formControlName="mobile">
+                <mat-hint>Enter Your Mobile Number</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Batch</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="batch">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <mat-radio-group color="warn" formControlName="gender">
+            <mat-label>Gender</mat-label>
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="others">Others</mat-radio-button>
+            <mat-checkbox color="warn">Is Active</mat-checkbox>
+        </mat-radio-group>
+
+        <!-- Apply For address FormGroup -->
+        <h6>Add Address</h6>
+        <div formGroupName="address">
+            <div class="row">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input type="text" matInput placeholder="Enter City" formControlName="city">
+                    <mat-hint>Enter Your City</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Mandal</mat-label>
+                    <input type="text" matInput placeholder="Enter Mandal" formControlName="mandal">
+                    <mat-hint>Enter Your Mandal</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>District</mat-label>
+                    <input type="text" matInput placeholder="Enter District" formControlName="district">
+                    <mat-hint>Enter Your District</mat-hint>
+                </mat-form-field>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Pincode</mat-label>
+                    <input type="number" matInput placeholder="Enter Pincode" formControlName="pincode">
+                    <mat-hint>Enter Your Pincode</mat-hint>
+                </mat-form-field>
+            </div>
+
+            <!-- Apply form Select -->
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>State</mat-label>
+                <mat-select placeholder="Enter State" formControlName="state">
+                    <mat-option *ngFor="let state of states" [value]="state.value">
+                        {{state.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>Enter Your State</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <!-- Apply for Dynamic form-->
+
+        <div class="radio">
+            <mat-radio-group color="warn" formControlName="sourceType">
+                <mat-label>Source Form</mat-label>
+                <mat-radio-button value="Direct">Direct</mat-radio-button>
+                <mat-radio-button value="Referral">Referral</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div *ngIf="studentForm.get('sourceType')?.value === 'Direct'">
+            <mat-form-field class="full-width">
+                <mat-label>Source Form</mat-label>
+                <input matInput type="text" placeholder="Enter Source Form" formControlName="sourceForm">
+                <mat-hint>Enter Source Form</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="studentForm.get('sourceType')?.value === 'Referral'">
+            <mat-form-field class="full-width">
+                <mat-label>Referral Name</mat-label>
+                <input matInput type="text" placeholder="Enter Source Form" formControlName="referralName">
+                <mat-hint>Enter Referral Name</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <!-- Apply one more company formGroup  -->
+        <h6>Add Company Details</h6>
+        <div formGroupName="company">
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <mat-label>name</mat-label>
+                    <input matInput type="text" placeholder="Enter Company Name" formControlName="name">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>location</mat-label>
+                    <input matInput type="text" placeholder="Enter Location" formControlName="location">
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="full-width">
+                    <mat-label>Package</mat-label>
+                    <input matInput type="text" placeholder="Enter Package" formControlName="package">
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>OfferDate</mat-label>
+                    <input matInput type="date" placeholder="Enter OfferDate" formControlName="offerDate">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <!-- Add buttom -->
+        <h6>Add Education Details</h6>
+        <div>
+            <button mat-raised-button color="primary" (click)="addEducation()">Add Education</button>
+        </div>
+
+        <!-- Apply form formArray education -->
+
+
+        <div formArrayName="education">
+            <div *ngFor="let edu of educationcards.controls; let i = index">
+                <div [formGroupName]="i">
+                    <div class="row">
+                        <mat-form-field class="full-width">
+                            <mat-label>Qualification</mat-label>
+                            <input matInput type="text" placeholder="Enter Qualification"
+                                formControlName="qualification">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Year</mat-label>
+                            <input matInput type="number" placeholder="Enter Year" formControlName="year">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width">
+                            <mat-label>Percentage</mat-label>
+                            <input matInput type="text" placeholder="Enter Percentage" formControlName="percentage">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <button mat-raised-button color="warn" (click)="removeEducation(i)">Delete</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dailog-action [align]="'center'">
+    <div>
+        <button class="but" mat-raised-button color="primary" (click)="onSubmit()">{{actionbtn}}</button>
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+    </div>
+</div>

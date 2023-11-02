@@ -1,0 +1,37 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  mat-card{
+    margin: 2%;
+    margin-bottom: 15px;
+  }
+  .delete{
+    display: flex;
+    width: 250px;
+    height: 55px;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  th{
+    background-color: black !important;
+    color: white;
+  }
+  .filter{
+    width: 100%;
+    display: flex;
+  }
+  
+  .add-user-button {
+    margin-bottom: 10px; 
+    margin-left: 60%;
+    width: 50%;
+}

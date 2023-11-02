@@ -1,0 +1,36 @@
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section {
+    margin-bottom: 10px;
+  }
+  
+  .label {
+    margin-right: 10px;
+  }
+  
+  .button-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .data-section {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: none;
+  }
+  
+  .data-section.active {
+    display: block;
+  }
+  

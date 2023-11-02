@@ -1,0 +1,33 @@
+<div class="parent">
+    <mat-card>
+        <mat-toolbar color="warn">
+            <mat-card-title>Login Page</mat-card-title>
+        </mat-toolbar>
+        <form [formGroup]="form">
+        <mat-card-content>
+            <div class="example-container">
+                <mat-form-field>
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="@gmail.com" required formControlName="email">
+                    <mat-error>Email should be required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="example-container">
+                <mat-form-field>
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" required formControlName="password">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        <mat-error>password should be required</mat-error>
+                    </button>
+                </mat-form-field>
+            </div>
+            <div class="but">
+                <button mat-raised-button [disabled]="form.invalid" color="primary" (click)="login()">Submit</button>
+            </div>
+        </mat-card-content>
+    </form>
+    </mat-card>
+</div>

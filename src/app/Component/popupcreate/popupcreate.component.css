@@ -1,0 +1,20 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+  }
+   
+  .full-width {
+    width: 100%;
+    padding: 10px;
+  
+  }
+  .but{
+    margin-right: 10px;
+  }
+  h6{
+    color: rgb(27, 20, 231);
+    font-size: 20px;
+  }

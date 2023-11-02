@@ -1,0 +1,61 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+    <button mat-icon-button (click)="drawer.toggle()" class="example-icon"
+        aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+      <div>
+    <button class="gap" mat-raised-button routerLink="/login" color="accent">Login</button>
+    <button mat-raised-button (click)="openDialog()" color="warn">Create</button>
+
+    <button mat-icon-button (click)="toggleBadgeVisibility()">
+        <mat-icon [matBadgeHidden]="hidden" matBadgeColor="warn" matBadge="15"
+            matBadgeSize="small">notifications</mat-icon>
+    </button>
+      </div>
+</mat-toolbar>
+
+<mat-drawer-container autosize class="example-container">
+    <mat-drawer #drawer mode="side" opened="false" position="start">
+        <mat-nav-list>
+
+            <mat-list-item>
+                <button mat-button><mat-icon>dashboard</mat-icon>Dashboard</button>
+            </mat-list-item>
+            <hr>
+
+            <mat-list-item>
+                <button mat-button routerLink="studenttable"><mat-icon color="primary">favorite</mat-icon>Student
+                    Table</button>
+            </mat-list-item>
+
+            <mat-list-item>
+                <button mat-button routerLink="createform"><mat-icon color="warn">favorite</mat-icon>Create
+                    Form</button>
+            </mat-list-item>
+
+            <mat-list-item>
+                <button mat-button routerLink="popuptable"><mat-icon color="warn">favorite</mat-icon>Popup Table
+                    </button>
+            </mat-list-item>
+
+
+            <mat-list-item>
+                <button mat-button><mat-icon>settings</mat-icon>setting</button>
+            </mat-list-item>
+        </mat-nav-list>
+        <hr>
+        <div class="center">
+            <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+        </div>
+
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <div style="text-align: center;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+
+</mat-drawer-container>

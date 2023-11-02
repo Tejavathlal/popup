@@ -1,0 +1,122 @@
+
+
+ <!-- Create a table page  -->
+ <mat-card>
+    <mat-card-header>
+         <!-- Apply Filter Method user -->
+         <div class="filter">
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput [(ngModel)]="term" (keypress)="applyFilter()" placeholder="Search Filter" #input>
+            </mat-form-field>
+            <div class="add-user-button">
+                <button  mat-raised-button color="primary"(click)="openpopup()"><mat-icon>add</mat-icon>Create</button> 
+                
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- <div class="add-user-button">
+            <button style="margin-left: 60%;" mat-raised-button color="primary">Add User (+) </button> 
+        </div>
+  -->
+        <!-- Apply Filter Method user
+        <div class="filter">
+        <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput [(ngModel)]="term" (keyup)="applyFilter()" placeholder="Search Filter" #input>
+        </mat-form-field>
+        <button style="margin-left: 60%;" mat-raised-button color="primary">Add User (+) </button>
+    </div> -->
+
+        <!-- Apply Sort Method user -->
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                    <td mat-cell *matCellDef="let student"> {{student.id}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let student"> {{student.name}} </td>
+                </ng-container>
+
+                <!-- Gender Column -->
+                <ng-container matColumnDef="gender">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+                    <td mat-cell *matCellDef="let student"> {{student.gender}} </td>
+                </ng-container>
+
+                <!-- Mobile Column -->
+                <ng-container matColumnDef="mobile">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+                    <td mat-cell *matCellDef="let student"> {{student.mobile}} </td>
+                </ng-container>
+
+                <!-- Batch Column -->
+                <ng-container matColumnDef="batch">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Batch </th>
+                    <td mat-cell *matCellDef="let student"> {{student.batch}} </td>
+                </ng-container>
+
+                <!-- District Column -->
+                <ng-container matColumnDef="district">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> District </th>
+                    <td mat-cell *matCellDef="let student"> {{student.district}} </td>
+                </ng-container>
+
+                <!-- State Column -->
+                <ng-container matColumnDef="state">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> State </th>
+                    <td mat-cell *matCellDef="let student"> {{student.state}} </td>
+                </ng-container>
+
+                <!-- Location Column -->
+                <ng-container matColumnDef="location">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+                    <td mat-cell *matCellDef="let student"> {{student.location}} </td>
+                </ng-container>
+
+                <!-- Package Column -->
+                <ng-container matColumnDef="package">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Package </th>
+                    <td mat-cell *matCellDef="let student"> {{student.package}} </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                    <td mat-cell *matCellDef="let student" class="delete">
+                        <!-- <button mat-raised-button  color="primary" (click)="edit(student.id)">Edit</button> -->
+                        <button mat-raised-button  color="primary" (click)="edit(student.id)">Edit</button>
+
+                        <!-- <button mat-raised-button color="accent" (click)="view(student.id)">View</button> -->
+                        <button mat-raised-button color="accent" (click)="view(student.id)">View</button>
+
+                        <button mat-raised-button color="warn" (click)="delete(student.id)">Delete</button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="10">No data matching the filter "{{term}}"</td>
+                </tr>
+            </table>
+            
+             <!-- Apply Pagination Method user -->
+
+            <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page of users"></mat-paginator> -->
+        </div>
+    </mat-card-content>
+    <br>
+    <mat-card-footer>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
+    </mat-card-footer>
+</mat-card>
